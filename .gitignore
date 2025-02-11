@@ -1,0 +1,18 @@
+# BUILD FILES
+build
+__pycache__
+*.egg-info
+
+# Log files
+logs
+*.log
+
+# Output/reports
+output
+
+# Datasets
+input
+
+# Scratch files
+*scratch*
+*.txt
