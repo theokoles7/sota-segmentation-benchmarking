@@ -2,19 +2,19 @@
 
 __all__ = ["LOGGER"]
 
-from logging            import getLogger, Formatter, Logger, StreamHandler
-from logging.handlers   import RotatingFileHandler
-from os                 import makedirs
-from sys                import stdout
+from logging                import getLogger, Formatter, Logger, StreamHandler
+from logging.handlers       import RotatingFileHandler
+from os                     import makedirs
+from sys                    import stdout
 
-from utils.arguments    import ARGS
-from utils.timestamp    import TIMESTAMP
+from utilities.arguments    import ARGS
+from utilities.timestamp    import TIMESTAMP
 
 # Ensure that logging path exists
 makedirs(name = ARGS.logging_path, exist_ok = True)
 
 # Initialize logger
-LOGGER:         Logger =                getLogger("adaptive-kernel")
+LOGGER:         Logger =                getLogger("segment")
 
 # Set logging level
 LOGGER.setLevel(ARGS.logging_level)

@@ -11,7 +11,7 @@ __all__ = ["Seg_Former"]
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class Seg_Former():
     """Seg-Former (Transformer-based) segmentation model."""

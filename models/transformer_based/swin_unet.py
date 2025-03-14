@@ -11,7 +11,7 @@ __all__ = ["Swin_Unet"]
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class Swin_Unet():
     """Swin-Unet (Transformer-based) segmentation model."""
