@@ -11,7 +11,7 @@ __all__ = ["UNet"]
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class UNet():
     """U-Net (CNN-based) segmentation model."""

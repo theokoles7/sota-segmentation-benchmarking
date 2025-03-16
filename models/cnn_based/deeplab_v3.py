@@ -11,7 +11,7 @@ __all__ = ["DeepLabV3"]
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class DeepLabV3():
     """DeepLabV3+ (CNN-based) segmentation model."""
