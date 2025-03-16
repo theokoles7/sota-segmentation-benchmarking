@@ -20,9 +20,14 @@ setup(
     license =           "MIT",
     url =               "https://github.com/theokoles7/sota-segmentation-benchmarking",
     packages =          find_packages(),
-    python_requires =   ">=3.10",
+    python_requires =   ">=3.11",
     install_requires =  [
-                            "matplotlib",
-                            "torch"
+                            "donfig>=0.8",
+                            "numcodecs[crc32c]>=0.14",
+                            "numpy>=1.25",
+                            "packaging>=22.0",
+                            "rich",
+                            "typing_extensions>=4.9",
+                            "zarr"
                         ]
 )
