@@ -23,6 +23,7 @@ setup(
     python_requires =   ">=3.11",
     install_requires =  [
                             "donfig>=0.8",
+                            "GitPython",
                             "numcodecs[crc32c]>=0.14",
                             "numpy>=1.25",
                             "packaging>=22.0",
