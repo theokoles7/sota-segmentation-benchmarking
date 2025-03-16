@@ -2,7 +2,9 @@
 
 __all__ = ["ARGS"]
 
-from argparse                   import ArgumentParser, _ArgumentGroup, Namespace, _SubParsersAction
+from argparse                       import ArgumentParser, _ArgumentGroup, Namespace, _SubParsersAction
+
+from utilities.arguments.commands   import add_download_dataset_parser
 
 # Initialize parser
 _parser_:       ArgumentParser =    ArgumentParser(
@@ -13,7 +15,7 @@ _parser_:       ArgumentParser =    ArgumentParser(
 
 # Initialize sub-parser
 _subparser_:    _SubParsersAction = _parser_.add_subparsers(
-    dest =          "cmd",
+    dest =          "command",
     help =          """Command being executed."""
 )
 
@@ -57,6 +59,7 @@ _output_.add_argument(
 )
 
 # COMMANDS =========================================================================================
+add_download_dataset_parser(parent_subparser =  _subparser_)
 
 # +================================================================================================+
 # | END ARGUMENTS                                                                                  |
