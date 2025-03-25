@@ -28,6 +28,7 @@ setup(
                             "numpy>=1.25",
                             "packaging>=22.0",
                             "rich",
+                            "torch",
                             "typing_extensions>=4.9",
                             "zarr"
                         ]
