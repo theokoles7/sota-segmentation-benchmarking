@@ -80,6 +80,9 @@ class UNet(Module):
         self._retain_dimension_:    bool =          retain_dimension
         self._channels_out_:        tuple[int] =    channels_out
         
+        # Log initialization for debugging.
+        self.__logger__.debug(f"Initialized U-Net model ({locals()})")
+        
     def forward(self,
         X:  Tensor
     ) -> Tensor:

@@ -54,6 +54,9 @@ class Decoder(Module):
                                                     ) for d in range(len(dimensions) - 1)
                                                 ])
         
+        # Log initialization for debugging.
+        self.__logger__.debug(f"Initialized U-Net.Decoder ({locals()})")
+        
     def forward(self,
         X:                  Tensor,
         encoding_features:  list[Tensor]

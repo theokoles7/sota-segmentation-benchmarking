@@ -43,6 +43,9 @@ class Encoder(Module):
         # Define pooling layer.
         self._pool_:            MaxPool2d =     MaxPool2d(kernel_size = 2)
         
+        # Log initialization for debugging.
+        self.__logger__.debug(f"Initialized U-Net.Encoder ({locals()})")
+        
     def forward(self,
         X:  Tensor
     ) -> list[Tensor]:

@@ -45,6 +45,9 @@ class ConvolutionalBlock(Module):
         # Define non-linear layer.
         self._relu_:        ReLU =      ReLU()
         
+        # Log initialization for debugging.
+        self.__logger__.debug(f"Initialized U-Net.ConvolutionalBlock ({locals()})")
+        
     def forward(self,
         X:  Tensor
     ) -> Tensor:
