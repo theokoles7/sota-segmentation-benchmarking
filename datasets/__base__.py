@@ -3,6 +3,7 @@
 from logging            import Logger
 
 from torch.utils.data   import Dataset
+from zarr               import Group, open
 
 from utilities          import LOGGER
 
@@ -30,6 +31,19 @@ class CellMapDataset(Dataset):
             * seed              (int, optional):    Random seed for reproducibility. Defaults to 42.
         """
         # Initialize logger.
-        self.__logger__:    Logger =    LOGGER.getChild("cellmap")
+        self.__logger__:        Logger =    LOGGER.getChild("cellmap")
         
-        
+        # Open dataset.
+        self._root_ :           Group =     open(path, mode = "r")
+
+        # Get reconstruction group names.
+        self._reconstructions_: list =      list(self._root_.keys())
+
+    def __len__(self) -> int:
+        """# Indicate length of dataset.
+
+        ## Returns:
+            * int:  Number of samples in dataset.
+        """
+        # Provide number of samples.
+        return len(self.indices)
