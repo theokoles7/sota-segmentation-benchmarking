@@ -1,6 +1,6 @@
 """Drive applicaiton."""
 
-from utils  import ARGS, BANNER, LOGGER
+from utilities  import ARGS, BANNER, LOGGER
 
 if __name__ == "__main__":
     """Execute application command(s)."""

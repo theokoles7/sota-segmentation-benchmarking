@@ -11,7 +11,7 @@ __all__ = ["MedSAM"]
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class MedSAM():
     """MedSAM (Foundational) segmentation model."""

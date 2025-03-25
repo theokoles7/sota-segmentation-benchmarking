@@ -11,7 +11,7 @@ __all__ = ["SAM"]
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class SAM():
     """SAM (Foundational) segmentation model."""
