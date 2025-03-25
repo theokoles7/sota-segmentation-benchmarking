@@ -3,4 +3,4 @@
 __all__ = ["DeepLabV3", "UNet"]
 
 from models.cnn_based.deeplab_v3    import DeepLabV3
-from models.cnn_based.unet.unet     import UNet
+from models.cnn_based.unet          import UNet
