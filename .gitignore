@@ -12,6 +12,7 @@ output
 
 # Datasets
 data
+*.csv
 
 # Scratch files
 *scratch*
