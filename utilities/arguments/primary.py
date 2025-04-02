@@ -4,7 +4,7 @@ __all__ = ["ARGS"]
 
 from argparse                       import ArgumentParser, _ArgumentGroup, Namespace, _SubParsersAction
 
-from utilities.arguments.commands   import add_download_dataset_parser
+from utilities.arguments.commands   import *
 
 # Initialize parser
 _parser_:       ArgumentParser =    ArgumentParser(
@@ -60,6 +60,7 @@ _output_.add_argument(
 
 # COMMANDS =========================================================================================
 add_download_dataset_parser(parent_subparser =  _subparser_)
+add_run_job_parser(parent_subparser =           _subparser_)
 
 # +================================================================================================+
 # | END ARGUMENTS                                                                                  |

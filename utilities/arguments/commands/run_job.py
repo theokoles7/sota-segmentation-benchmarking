@@ -2,7 +2,9 @@
 
 __all__ = ["add_run_job_parser"]
 
-from argparse   import ArgumentParser, _SubParsersAction
+from argparse                   import ArgumentParser, _SubParsersAction
+
+from utilities.arguments.models import *
 
 def add_run_job_parser(
     parent_subparser:   _SubParsersAction
@@ -23,3 +25,6 @@ def add_run_job_parser(
                                             title =     "model",
                                             description = """Model with which job will be executed."""
                                         )
+    
+    # Add model parsers.
+    add_unet_parser(parent_subparser = _subparser_)
