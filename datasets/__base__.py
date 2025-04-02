@@ -53,7 +53,17 @@ class CellMapDataset(Dataset):
             # Skip if group does not contain "em" volume or labels.
             if "em" not in reconstruction_group or "labels" not in reconstruction_group: continue
 
-            # 
+            # Initialize EM volume dictionary.
+            em_volumes:             dict =  {}
+            
+            # For each volume in EM...
+            for volume_name in reconstruction_group["em"].keys():
+                
+                # For each group in volume...
+                for em_group in reconstruction_group["em"][volume_name]:
+                    
+                    # Update EM volume dictionary.
+                    em_volumes[volume_name] =   em_group[]
 
     def __getitem__(self,
         idx:    int
