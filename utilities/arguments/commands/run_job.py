@@ -20,6 +20,14 @@ def add_run_job_parser(
                                             help =  """Run a job on the CellMap Challenge dataset."""
                                         )
     
+    _parser_.add_argument(
+        "datasplit",
+        type =      int,
+        choices =   [1, 2, 3, 4, 5],
+        default =   1,
+        help =      """Datasplit to run the job on. Defaults to 1."""
+    )
+    
     # Initialize sub-parser.
     _subparser_:  _SubParsersAction =   _parser_.add_subparsers(
                                             title =     "model",
