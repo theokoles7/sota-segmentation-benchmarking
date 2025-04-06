@@ -1,18 +1,10 @@
-# BUILD FILES
-build
+# Build files
 __pycache__
 *.egg-info
 
-# Log files
+# Logs
 logs
-*.log
-
-# Output/reports
-output
 
 # Datasets
 data
 
-# Scratch files
-*scratch*
-*.txt

@@ -1,31 +1,29 @@
-"""DeepLabV3+ model wrapper."""
+"""U-Net model wrapper."""
 
 from logging                        import Logger
 
-from segmentation_models_pytorch    import DeepLabV3Plus
+from segmentation_models_pytorch    import Unet
 
 from utilities                      import LOGGER
 
-class DeepLabV3(DeepLabV3Plus):
-    """DeepLab-V3+ wrapper class."""
+class UNet(Unet):
+    """U-Net wrapper class."""
     
     def __init__(self,
         encoder_name:           str =               "resnet34",
         encoder_depth:          int =               5,
         encoder_weights:        str =               "imagenet",
-        encoder_output_stride:  int =               16,
-        decoder_channels:       int =               256,
-        decoder_atrous_rates:   tuple[int] =        (12, 24, 36),
-        decoder_aspp_separable: bool =              True,
-        decoder_aspp_dropout:   float =             0.5,
+        decoder_user_norm:      str =               "batchnorm",
+        decoder_channels:       tuple[int] =        (256, 128, 64, 32, 16),
+        decoder_attention_type: str =               None,
+        decoder_interpolation:  str =               "nearest",
         in_channels:            int =               3,
         classes:                int =               1,
         activation:             str | Callable =    None,
-        upsampling:             int =               4,
         aux_params:             dict =              None,
         **kwargs
     ):
-        """# Initialize DeepLab-V3+ model.
+        """# Initialize U-Net model.
 
         ## Args:
             * encoder_name              (str, optional):            Name of the classification model 
@@ -51,20 +49,34 @@ class DeepLabV3(DeepLabV3Plus):
                                                                     table with available weights for 
                                                                     each encoder_name). Defaults to 
                                                                     "imagenet".
-            * encoder_output_stride     (int, optional):            Downsampling factor for last 
-                                                                    encoder features (see original 
-                                                                    paper for explanation). Defaults 
-                                                                    to 16.
-            * decoder_channels          (int, optional):            A number of convolution filters 
-                                                                    in ASPP module. Defaults to 256.
-            * decoder_atrous_rates      (tuple[int], optional):     Dilation rates for ASPP module 
-                                                                    (should be an iterable of 3 
-                                                                    integer values). Defaults to 
-                                                                    (12, 24, 36).
-            * decoder_aspp_separable    (bool, optional):           Use separable convolutions in 
-                                                                    ASPP module. Defaults to True.
-            * decoder_aspp_dropout      (float, optional):          Use dropout in ASPP module 
-                                                                    projection layer. Defaults to 0.5.
+            * decoder_user_norm         (str, optional):            Specifies normalization between 
+                                                                    Conv2D and activation. Accepts 
+                                                                    the following types: - True: 
+                                                                    Defaults to “batchnorm”. - False: 
+                                                                    No normalization (nn.Identity). 
+                                                                    - str: Specifies normalization 
+                                                                    type using default parameters. 
+                                                                    Available values: "batchnorm", 
+                                                                    "identity", "layernorm", 
+                                                                    "instancenorm", or "inplace". 
+                                                                    Defaults to "batchnorm".
+            * decoder_channels          (tuple[int], optional):     List of integers which specify 
+                                                                    in_channels parameter for 
+                                                                    convolutions used in decoder. 
+                                                                    Length of the list should be 
+                                                                    the same as encoder_depth. 
+                                                                    Defaults to (256, 128, 64, 
+                                                                    32, 16).
+            * decoder_attention_type    (str, optional):            Attention module used in decoder 
+                                                                    of the model. Available options 
+                                                                    are None and scse. Defaults to 
+                                                                    None.
+            * decoder_interpolation     (str, optional):            Interpolation mode used in 
+                                                                    decoder of the model. Available 
+                                                                    options are “nearest”, 
+                                                                    “bilinear”, “bicubic”, “area”, 
+                                                                    “nearest-exact”. Defaults to 
+                                                                    "nearest".
             * in_channels               (int, optional):            A number of input channels for 
                                                                     the model, default is 3 (RGB 
                                                                     images).
@@ -78,10 +90,6 @@ class DeepLabV3(DeepLabV3Plus):
                                                                     “sigmoid”, “softmax”, 
                                                                     “logsoftmax”, “tanh”, 
                                                                     “identity”. Defaults to None.
-            * upsampling                (int, optional):            Final upsampling factor. Default 
-                                                                    is 4 to preserve input-output 
-                                                                    spatial shape identity. Defaults 
-                                                                    to 4.
             * aux_params                (dict, optional):           Dictionary with parameters of 
                                                                     the auxiliary output 
                                                                     (classification head). 
@@ -90,10 +98,10 @@ class DeepLabV3(DeepLabV3Plus):
                                                                     None (default). Defaults to None.
         """
         # Initialize logger.
-        self.__logger__:    Logger =    LOGGER.getChild("deeplab-v3+")
+        self.__logger__:    Logger =    LOGGER.getChild("u-net")
         
         # Initialize model.
-        super(DeepLabV3, self).__init__(**locals())
+        super(UNet, self).__init__(**locals())
         
         # Log initialization for debugging.
-        self.__logger__.debug(f"DeepLab-V3+ model initialized ({locals()})")
+        self.__logger__.debug(f"U-Net model initialized ({locals()})")

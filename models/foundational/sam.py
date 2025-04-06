@@ -1,26 +1,19 @@
-"""SAM model implementation.
+"""SAM model wrapper.
 
-Based on the 2023 paper by Alexander Kirillov et al.:
-https://openaccess.thecvf.com/content/ICCV2023/papers/Kirillov_Segment_Anything_ICCV_2023_paper.pdf
-
-Informed by sources:
-* facebookresearch @ GitHub: https://github.com/facebookresearch/segment-anything
+Implementation adapted from https://pypi.org/project/segment-anything-py/
 """
 
-__all__ = ["SAM"]
+from logging            import Logger
 
-from logging    import Logger
+from segment_anything   import SamPredictor
 
-from utilities  import LOGGER
+from utilities          import LOGGER
 
-class SAM():
-    """SAM (Foundational) segmentation model."""
+class SAM(SamPredictor):
+    """SAM wrapper class."""
     
-    def __init__(self):
-        """Initialize SAM model."""
+    def __init__(self,
+
+    ):
         
-        # Initialize logger
-        __logger__: Logger =    LOGGER.getChild("sam")
-        
-        # This model has not been implemented
-        raise NotImplementedError(f"SAM model is not yet supported.")
+        SamPredictor()

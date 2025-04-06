@@ -1,26 +1,78 @@
-"""Seg-Former model implementation.
+"""Seg-Former model wrapper."""
 
-Based on the 2021 paper by Enze Xie et al.:
-https://proceedings.neurips.cc/paper/2021/file/64f1f27bf1b4ec22924fd0acb550c235-Paper.pdf
+from logging                        import Logger
 
-Informed by sources:
-* NVLabs @ GitHub: https://github.com/NVlabs/SegFormer
-"""
+from segmentation_models_pytorch    import Segformer
 
-__all__ = ["Seg_Former"]
+from utilities                      import LOGGER
 
-from logging    import Logger
-
-from utilities  import LOGGER
-
-class Seg_Former():
-    """Seg-Former (Transformer-based) segmentation model."""
+class SegFormer(Segformer):
+    """Seg-Former wrapper class."""
     
-    def __init__(self):
-        """Initialize Seg-Former model."""
+    def __init__(self,
+        encoder_name:           str =               "resnet34",
+        encoder_depth:          int =               5,
+        encoder_weights:        str =               "imagenet",
+        in_channels:            int =               3,
+        classes:                int =               1,
+        activation:             str | Callable =    None,
+        aux_params:             dict =              None,
+        **kwargs
+    ):
+        """# Initialize Seg-Former model.
+
+        ## Args:
+            * encoder_name              (str, optional):            Name of the classification model 
+                                                                    that will be used as an encoder 
+                                                                    (a.k.a backbone) to extract 
+                                                                    features of different spatial 
+                                                                    resolution. Defaults to 
+                                                                    "resnet34".
+            * encoder_depth             (int, optional):            A number of stages used in 
+                                                                    encoder in range [3, 5]. Each 
+                                                                    stage generate features two 
+                                                                    times smaller in spatial 
+                                                                    dimensions than previous one 
+                                                                    (e.g. for depth 0 we will have 
+                                                                    features with shapes [(N, C, H, 
+                                                                    W),], for depth 1 - [(N, C, H, 
+                                                                    W), (N, C, H // 2, W // 2)] and 
+                                                                    so on). Defaults to 5.
+            * encoder_weights           (str, optional):            One of None (random 
+                                                                    initialization), “imagenet” 
+                                                                    (pre-training on ImageNet) and 
+                                                                    other pretrained weights (see 
+                                                                    table with available weights for 
+                                                                    each encoder_name). Defaults to 
+                                                                    "imagenet".
+            * decoder_segmentation_channels (int, optional):        A number of convolution filters 
+                                                                    in segmentation blocks. Defaults 
+                                                                    to 256.
+            * in_channels               (int, optional):            A number of input channels for 
+                                                                    the model, default is 3 (RGB 
+                                                                    images).
+            * classes                   (int, optional):            A number of classes for output 
+                                                                    mask (or you can think as a 
+                                                                    number of channels of output 
+                                                                    mask). Defaults to 1.
+            * activation                (str | Callable, optional): An activation function to apply 
+                                                                    after the final convolution 
+                                                                    layer. Available options are 
+                                                                    “sigmoid”, “softmax”, 
+                                                                    “logsoftmax”, “tanh”, 
+                                                                    “identity”. Defaults to None.
+            * aux_params                (dict, optional):           Dictionary with parameters of 
+                                                                    the auxiliary output 
+                                                                    (classification head). 
+                                                                    Auxiliary output is build on top 
+                                                                    of encoder if aux_params is not 
+                                                                    None (default). Defaults to None.
+        """
+        # Initialize logger.
+        self.__logger__:    Logger =    LOGGER.getChild("seg-former")
         
-        # Initialize logger
-        __logger__: Logger =    LOGGER.getChild("seg-former")
+        # Initialize model.
+        super(SegFormer, self).__init__(**locals())
         
-        # This model has not been implemented
-        raise NotImplementedError(f"Seg-Former model is not yet supported.")
+        # Log initialization for debugging.
+        self.__logger__.debug(f"Seg-Former model initialized ({locals()})")

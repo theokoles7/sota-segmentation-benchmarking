@@ -24,10 +24,13 @@ setup(
     install_requires =  [
                             "donfig>=0.8",
                             "GitPython",
+                            "nibabel",
                             "numcodecs[crc32c]>=0.14",
                             "numpy>=1.25",
                             "packaging>=22.0",
                             "rich",
+                            "segment-anything-py",
+                            "segmentation-models-pytorch",
                             "torch",
                             "typing_extensions>=4.9",
                             "zarr"
