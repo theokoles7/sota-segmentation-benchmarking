@@ -30,8 +30,8 @@ def add_run_job_parser(
     
     # Initialize sub-parser.
     _subparser_:  _SubParsersAction =   _parser_.add_subparsers(
-                                            title =     "model",
-                                            description = """Model with which job will be executed."""
+                                            dest =          "model",
+                                            description =   """Model with which job will be executed."""
                                         )
     
     # Add model parsers.

@@ -2,11 +2,11 @@
 
 __all__ = ["load_dataset"]
     
-from cellmap_data.dataloader    import CellMapDataLoader
-from cellmap_data.transforms.augment import NaNtoNum, Binarize
+from cellmap_data.dataloader                            import CellMapDataLoader
+from cellmap_data.transforms.augment                    import NaNtoNum, Binarize
 from cellmap_segmentation_challenge.utils.dataloader    import get_dataloader
-from torch                      import float
-from torchvision.transforms.v2 import Compose, ToDtype
+from torch                                              import float
+from torchvision.transforms.v2                          import Compose, ToDtype
 
 def load_dataset(
     datasplit:  int,
@@ -24,7 +24,7 @@ def load_dataset(
     """
     # Return initialized loaders.
     return get_dataloader(
-        datasplit_path =                f"datasplit{datasplit}.csv",
+        datasplit_path =                f"datasplits/datasplit{datasplit}.csv",
         classes =                       ["mito", "er"],
         batch_size =                    batch_size,
         input_array_info =              {

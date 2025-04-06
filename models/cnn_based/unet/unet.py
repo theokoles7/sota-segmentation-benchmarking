@@ -61,7 +61,7 @@ class UNet(Module):
         super(UNet, self).__init__()
         
         # Initialize logger
-        __logger__:                 Logger =        LOGGER.getChild("u-net")
+        self.__logger__:            Logger =        LOGGER.getChild("u-net")
         
         # Initialize encoder.
         self._encoder_:             Encoder =       Encoder(dimensions =    encoder_channels)
