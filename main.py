@@ -9,8 +9,6 @@ if __name__ == "__main__":
     try:# Log banner
         LOGGER.info(BANNER)
         
-        print(vars(ARGS))
-        
         # Dtermine command being executed.
         match ARGS.command:
             

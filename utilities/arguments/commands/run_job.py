@@ -28,6 +28,13 @@ def add_run_job_parser(
         help =      """Datasplit to run the job on. Defaults to 1."""
     )
     
+    _parser_.add_argument(
+        "--epochs",
+        type =      int,
+        default =   200,
+        help =      """Number of epochs for which training phase will execute."""
+    )
+    
     # Initialize sub-parser.
     _subparser_:  _SubParsersAction =   _parser_.add_subparsers(
                                             dest =          "model",
