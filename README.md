@@ -19,6 +19,20 @@ This script conducts benchmarking experiments for various segmentation models.
 * Recall
 * Computational Costs
 
+## Running Experiments:
+Execute full suite of experiments by running: `bash ./run_experiments.sh`
+
+## Contributions: 
+All implementation and consulting of code fulfilled evenly by both team members.
+* Team Member 1 (Azwaad Labiba Mohiuddin):
+  * Datasets
+  * Metrics
+  * Data Visualization
+* Team Member 2 (Gabriel C. Trahan):
+  * Models
+  * Benchmarking Process
+  * Data Preprocessing
+
 ## Authors:
 * Gabriel C. Trahan         (C00058009)
 * Azwaad Labiba Mohiuddin   (C00580385)
