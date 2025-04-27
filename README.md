@@ -12,8 +12,7 @@ This script conducts benchmarking experiments for various segmentation models.
 * Oxford IIIT Pets          (https://www.robots.ox.ac.uk/~vgg/data/pets/)
 * Pascal VOC Segmentation   (http://host.robots.ox.ac.uk/pascal/VOC/)
 
-## For each model:dataset experiment, the following metrics will be reported in a "results" 
-directory:
+## For each model:dataset experiment, the following metrics will be reported in a "results" directory:
 * F1 Score
 * Dice Score
 * Precision
